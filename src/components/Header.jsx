@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Container, Form, Nav, NavDropdown, NavLink, Navbar, Offcanvas } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
 const Header = () => {
@@ -34,12 +35,12 @@ const Header = () => {
                 <Nav.Link href="#mission" className='mx-2'>Mission</Nav.Link>
                 <Nav.Link href="#footer" className='mx-2'>Contacts</Nav.Link>
               </Nav>
-              <Button className='btn px-4 btn-warning md-margin-top'>
+              <Link to={'/student'} className='btn px-4 btn-warning md-margin-top'>
                 Student Login
-              </Button>
-              <Button className='btn md-margin-top mx-2'>
+              </Link>
+              <Link to={'/admin'} className='btn btn-info md-margin-top mx-2'>
                 Admin Login
-              </Button>
+              </Link>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
