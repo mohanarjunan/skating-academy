@@ -28,12 +28,11 @@ const Header = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-start flex-grow-1 pe-3">
-                <Nav.Link href="#action1" className='mx-2'>Home</Nav.Link>
+                <Nav.Link href="/" className='mx-2'>Home</Nav.Link>
                 <Nav.Link href="#about" className='mx-2'>About</Nav.Link>
-                {/* <Nav.Link href="#training" className='mx-2'>Classes</Nav.Link> */}
                 <Nav.Link href="#training" className='mx-2'>Training</Nav.Link>
-                <Nav.Link href="#action5" className='mx-2'>Achievements</Nav.Link>
-                <Nav.Link href="#action6" className='mx-2'>Contacts</Nav.Link>
+                <Nav.Link href="#mission" className='mx-2'>Mission</Nav.Link>
+                <Nav.Link href="#footer" className='mx-2'>Contacts</Nav.Link>
               </Nav>
               <Button className='btn px-4 btn-warning md-margin-top'>
                 Student Login

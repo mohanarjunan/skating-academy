@@ -4,7 +4,7 @@ import img2 from '../assets/img/carousel/2.jpg'
 const Mission = () => {
   return (
     <>
-      <div className="container-fluid p-0">
+      <div className="container-fluid p-0" id='mission'>
         <div className="row g-0">
           <div className="col-lg-6">
             <div className="position-relative h-100">

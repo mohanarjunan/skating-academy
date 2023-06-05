@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Tranings = () => {
   return (
     <>
-      <Container fluid className='training-outer' id='training'>
+      <Container fluid className='training-outer py-5' id='training'>
         <div className="mb-5 text-center training-inner">
           <h5 className="text-warning text-uppercase">Practical</h5>
           <h1 className="display-4 text-white bold text-uppercase mb-0">Trainings</h1>

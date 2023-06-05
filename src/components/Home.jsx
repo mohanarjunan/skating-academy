@@ -1,9 +1,9 @@
 import React from 'react'
-import Header from './Header'
 import MyCarousel from './MyCarousel'
 import About from './About'
 import Tranings from './Tranings'
 import Mission from './Mission'
+import Footer from './Footer'
 
 const Home = () => {
   return (
@@ -15,6 +15,8 @@ const Home = () => {
       <Tranings />
 
       <Mission />
+
+      <Footer />
     </>
   )
 }
