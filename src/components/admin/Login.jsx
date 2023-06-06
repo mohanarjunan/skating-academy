@@ -1,10 +1,16 @@
 import React from 'react'
 
-const Login = () => {
+const Login = ({ setLoginStatus }) => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setLoginStatus(true)
+  }
+
   return (
     <>
       <div className='admin-form-bg'>
-        <form className='w-100 d-flex flex-column justify-content-center align-items-center' style={{ height: "90vh" }}>
+        <form className='w-100 d-flex flex-column justify-content-center align-items-center' style={{ height: "90vh" }} onSubmit={handleSubmit}>
           <div className='text-uppercase fs-1 bold mb-4 text-light'>Admin Login</div>
           <div class="row g-3">
             <div class="col-12">
@@ -19,7 +25,7 @@ const Login = () => {
             </div>
 
             <div class="col-12">
-              <button class="btn btn-info w-100 py-3" >Login</button>
+              <button class="btn btn-info w-100 py-3">Login</button>
             </div>
           </div>
         </form>

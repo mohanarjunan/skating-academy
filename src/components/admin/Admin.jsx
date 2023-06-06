@@ -10,9 +10,9 @@ const Admin = () => {
     <>
       {
         (loginStatus) ? (
-          <DashBoard />
+          <DashBoard setLoginStatus={setLoginStatus} />
         ) : (
-          <Login />
+          <Login setLoginStatus={setLoginStatus} />
         )
       }
     </>

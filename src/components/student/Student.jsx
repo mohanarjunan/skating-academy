@@ -10,7 +10,7 @@ const Student = () => {
     <>
       {
         (loginStatus) ? (
-          <DashBoard />
+          <DashBoard setLoginStatus={setLoginStatus} />
         ) : (
           <Login setLoginStatus={setLoginStatus} />
         )
