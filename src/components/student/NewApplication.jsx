@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useOutletContext } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import env from '../env.json'
 
 const NewApplication = () => {
 
@@ -13,28 +15,54 @@ const NewApplication = () => {
     email: "",
     phone: "",
     place: "",
-    aadhar: ""
+    aadhar: "",
+    status: "Applied",
+    refId: ""
   })
+
+  const [stdData] = useOutletContext()
+
+  useEffect(() => {
+    axios.get(env.apiBaseUrl + `/registration/${stdData.email}`).then((res) => {
+      setData({...data, refId: res.data.content._id})
+    })
+  }, [])
 
   const onSubmit = (e) => {
     e.preventDefault()
     if(data.phone.length != 10) {
       Swal.fire({
         title: "Submission Faild!",
-        icon: "error",
+        icon: "warning",
         text: "Phone Number is Must Contained 10 digits!",
       })
       return
     }
-    if(data.aadhar != 16) {
+    if(data.aadhar.length != 12) {
       Swal.fire({
         title: "Submission Faild!",
-        icon: "error",
-        text: "Aadhar Number is Must Contained 16 digits!",
+        icon: "warning",
+        text: "Aadhar Number is Must Contained 12 digits!",
       })
       return
     }
-    // Registration API
+    axios.post(env.apiBaseUrl + `/application`, data).then((res) => {
+      if(res.data.status) {
+        Swal.fire({
+          title: res.data.msg,
+          icon: "success",
+          text: "Application is Registered, Please Monitor the Status!",
+        })
+        return
+      } else {
+        Swal.fire({
+          title: res.data.msg,
+          icon: "error",
+          text: "Applcation is Not Registered, Please try again later!",
+        })
+      }
+    })
+
   }
 
   const handleChange = (e) => {

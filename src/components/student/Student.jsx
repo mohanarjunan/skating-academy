@@ -5,14 +5,15 @@ import Login from './Login'
 const Student = () => {
 
   const [loginStatus, setLoginStatus] = useState(false)
+  const [stdData, setStdData] = useState({})
 
   return (
     <>
       {
         (loginStatus) ? (
-          <DashBoard setLoginStatus={setLoginStatus} />
+          <DashBoard setLoginStatus={setLoginStatus} stdData={stdData} />
         ) : (
-          <Login setLoginStatus={setLoginStatus} />
+          <Login setLoginStatus={setLoginStatus} setStdData={setStdData} />
         )
       }
     </>

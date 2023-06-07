@@ -1,11 +1,40 @@
-import React from 'react'
-import { Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import env from '../env.json'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
-const LoginForm = ({ setLoginStatus, setSignUp }) => {
+const LoginForm = ({ setLoginStatus, setSignUp, setStdData }) => {
+
+  const [data, setData] = useState({
+    email: "",
+    password: ""
+  })
 
   const onSubmit = (e) => {
-    setLoginStatus(true)
+    e.preventDefault()
+    axios.get(env.apiBaseUrl + `/registration/${data.email}/${data.password}`).then((res) => {
+      if (res.data.status) {
+        Swal.fire({
+          title: res.data.msg,
+          text: "Welcome to Student Dashboard!",
+          icon: 'success'
+        })
+        setLoginStatus(true)
+        setStdData(data)
+        return
+      } else {
+        Swal.fire({
+          title: res.data.msg,
+          text: "Please try with correct Credentialls!",
+          icon: "error"
+        })
+      }
+    })    
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setData({...data, [name]: value})
   }
 
   const signUpChange = (e) => {
@@ -19,18 +48,22 @@ const LoginForm = ({ setLoginStatus, setSignUp }) => {
           <div className='text-uppercase fs-1 bold mb-4 text-light'>Student Login</div>
           <div className="row g-3">
             <div className="col-12">
-              <input type="text" name="std_email" className="form-control bg-light border-0 px-4" placeholder="Student Email *"
+              <input type="email" name="email" className="form-control bg-light border-0 px-4" placeholder="Student Email *"
                 required
-                style={{ height: "55px" }} />
+                style={{ height: "55px" }} 
+                onChange={handleChange}
+                />
             </div>
             <div className="col-12">
-              <input type="password" name="std_pwd" className="form-control bg-light border-0 px-4" placeholder="Password *"
+              <input type="password" name="password" className="form-control bg-light border-0 px-4" placeholder="Password *"
                 required
-                style={{ height: "55px" }} />
+                style={{ height: "55px" }} 
+                onChange={handleChange}
+                />
             </div>
 
             <div className="col-12">
-              <button className="btn btn-warning w-100 py-3" onClick={onSubmit}>Login</button>
+              <button className="btn btn-warning w-100 py-3" type='submit' onClick={onSubmit}>Login</button>
               <button className="btn btn-info w-100 py-3 mt-2" onClick={signUpChange} >Sign up</button>
             </div>
           </div>
