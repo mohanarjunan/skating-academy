@@ -55,7 +55,7 @@ const Tranings = () => {
             </div>
             <div className="col-lg-12 col-md-6 text-center">
               <h1 className="text-uppercase text-light mb-4">Summer Camp Registration is Going...</h1>
-              <Link className="btn btn-warning py-3 px-5">Become a Student</Link>
+              <Link to={'/register'} className="btn btn-warning py-3 px-5">Become a Student</Link>
             </div>
           </div>
         </div>

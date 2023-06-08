@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Swal from 'sweetalert2'
 import env from '../env.json'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const StudentSignUP = ({ setSignUp }) => {
 
@@ -13,6 +14,8 @@ const StudentSignUP = ({ setSignUp }) => {
         gender: "",
         dob: ""
     })
+
+    const navigate = useNavigate()
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -32,6 +35,7 @@ const StudentSignUP = ({ setSignUp }) => {
                   icon: "success"
               })
               setSignUp(false)
+              navigate('/student')
               return
           } else {
               Swal.fire({
